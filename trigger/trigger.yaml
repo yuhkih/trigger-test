@@ -1,0 +1,10 @@
+
+apiVersion: triggers.tekton.dev/v1beta1
+kind: Trigger
+metadata:
+  name: mytrigger
+spec:
+  bindings:
+  - ref: test-trigger-binding
+  template:
+    ref: test-trigger-template
