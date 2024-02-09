@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: test-event-listener
+spec:
+  triggers:
+    - bindings:
+        - ref: test-trigger-binding
+      template:
+        ref: test-trigger-template

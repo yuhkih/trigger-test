@@ -1,0 +1,2 @@
+# インターネットにアクセスできる環境で以下のコマンドを route に対して実行すると pipelinerun が走る
+curl -X POST -H 'Content-Type: application/json' el-test-event-listener-trigger-test.apps-crc.testing -d '{"head_commit":{"id": "master"},"repository":{"url": "https://github.com/yuhkih/go-http"}}'

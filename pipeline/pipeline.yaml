@@ -1,0 +1,46 @@
+# 簡単な 2 Task で構成される Pipeline
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: test-pipeline
+spec:
+  # Task間のデータの受け渡しはworkspaceにて実施
+  workspaces:
+    - name: shared-workspace
+  # 各Taskで利用されるパラメータを定義
+  params:
+    - name: url
+      type: string
+    - name: IMAGE
+      type: string
+  tasks:
+    #  Repository から Source を取得
+    - name: git-clone
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      params:
+        - name: url
+          value: $(params.url)
+        - name: subdirectory
+          value: ""
+        - name: deleteExisting
+          value: "true"
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+    # Build and push
+    - name: buildah
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      runAfter:
+        - git-clone 
+      params:
+        - name: IMAGE
+          value: $(params.IMAGE)
+        - name: SKIP_PUSH
+          value: "true"
+      workspaces:
+        - name: source
+          workspace: shared-workspace

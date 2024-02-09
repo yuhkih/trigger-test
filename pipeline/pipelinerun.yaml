@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: my-test-run-
+spec:
+  pipelineRef:
+    name: test-pipeline
+  params:
+    - name: url
+      value: 'https://github.com/yuhkih/go-http.git'
+    - name: IMAGE
+      value: 'go-http:latest'
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 500M
