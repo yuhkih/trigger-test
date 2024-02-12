@@ -1,0 +1,7 @@
+もし buildah ClusterTaks "buildah" で、docker hub に Image を Push したい場合は、Pipeline で SKIP_PUSH を false にした後、以下が必要
+
+# 1. Secret を作成する
+$ oc create secret docker-registry mydockersecret --docker-username=yuhkih --docker-password=xxxxx
+
+# 2. Secret を SA pipeline にリンクさせる
+$ oc secret link pipeline mydockersecret

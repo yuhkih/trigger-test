@@ -9,13 +9,13 @@ spec:
     - name: url
       value: 'https://github.com/yuhkih/go-http.git'
     - name: IMAGE
-      value: 'go-http:latest'
+      value: 'yuhkih/go-http:latest'  # buildah Cluster Task での Push 先 (=生成されるイメージのタグ名)
   workspaces:
     - name: shared-workspace
-      volumeClaimTemplate:
+      volumeClaimTemplate:  # pipelinerun 毎に作られる。pipelrinerun を消すと消える
         spec:
           accessModes:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 500M
+              storage: 100M

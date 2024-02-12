@@ -21,7 +21,7 @@ spec:
           - name: url
             value: $(tt.params.gitrepositoryurl)
           - name: IMAGE
-            value: 'jpishikawa/mkdocs-test'
+            value: 'go-http:latest'
         workspaces:
           - name: shared-workspace
             volumeClaimTemplate:
