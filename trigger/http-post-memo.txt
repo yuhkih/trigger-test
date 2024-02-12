@@ -1,2 +1,4 @@
 # インターネットにアクセスできる環境で以下のコマンドを route に対して実行すると pipelinerun が走る
+# Service は自分で公開する必要がある。環境によって route 名が変わる
+
 curl -X POST -H 'Content-Type: application/json' el-test-event-listener-trigger-test.apps-crc.testing -d '{"head_commit":{"id": "master"},"repository":{"url": "https://github.com/yuhkih/go-http"}}'

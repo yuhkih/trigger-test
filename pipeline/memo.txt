@@ -1,7 +1,11 @@
-もし buildah ClusterTaks "buildah" で、docker hub に Image を Push したい場合は、Pipeline で SKIP_PUSH を false にした後、以下が必要
+もし buildah ClusterTaks "buildah" で、docker hub に Image を Push したい場合は、
 
-# 1. Secret を作成する
+# 1. pipeline.yaml を編集して、SKIP_PUSH を false にする
+
+# 2. pipelinerun.yaml を編集して PUSH 先を 自分の Docker Hub のレポジトリに変更
+
+# 3. Secret を作成する
 $ oc create secret docker-registry mydockersecret --docker-username=yuhkih --docker-password=xxxxx
 
-# 2. Secret を SA pipeline にリンクさせる
+# 4. Secret を Serivce Account  pipeline にリンクさせる。SA pipeline は、OpenShift Pipeline Operator を導入すると自動で作られて、pipeline の実行に使われている
 $ oc secret link pipeline mydockersecret

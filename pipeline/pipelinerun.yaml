@@ -7,9 +7,9 @@ spec:
     name: test-pipeline
   params:
     - name: url
-      value: 'https://github.com/yuhkih/go-http.git'
+      value: 'https://github.com/yuhkih/go-http.git' # このサンプルコードは Public。自分の Dockerfile のソースがあるならそのレポにしても OK 
     - name: IMAGE
-      value: 'yuhkih/go-http:latest'  # buildah Cluster Task での Push 先 (=生成されるイメージのタグ名)
+      value: 'yuhkih/go-http:latest'  # buildah Cluster Task での Push 先 (=生成されるイメージのタグ名)。自分の DockerHub のレポ名に書き替える。
   workspaces:
     - name: shared-workspace
       volumeClaimTemplate:  # pipelinerun 毎に作られる。pipelrinerun を消すと消える

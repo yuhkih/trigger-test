@@ -21,7 +21,7 @@ spec:
           - name: url
             value: $(tt.params.gitrepositoryurl)
           - name: IMAGE
-            value: 'go-http:latest'
+            value: 'yuhkih/go-http:latest'  # Cluster Task buildah で Image を push する場合はここを自分の Docker Hub レポに書き替える。
         workspaces:
           - name: shared-workspace
             volumeClaimTemplate:

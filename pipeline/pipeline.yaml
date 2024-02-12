@@ -38,7 +38,7 @@ spec:
         - name: IMAGE
           value: $(params.IMAGE)
         - name: SKIP_PUSH  # PUSH はレジストリが必要なので、実験環境を簡単にするためにここではスキップ
-          value: "false"
+          value: "true"  # ここを false にする場合はレジストリ周りのセットアップが必要
       workspaces:
         - name: source
           workspace: shared-workspace
