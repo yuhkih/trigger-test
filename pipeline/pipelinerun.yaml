@@ -9,7 +9,8 @@ spec:
     - name: url
       value: 'https://github.com/yuhkih/go-http.git' # このサンプルコードは Public。自分の Dockerfile のソースがあるならそのレポにしても OK 
     - name: IMAGE
-      value: 'yuhkih/go-http:latest'  # buildah Cluster Task での Push 先 (=生成されるイメージのタグ名)。自分の DockerHub のレポ名に書き替える。
+      value: 'yuhkih/go-http:latest'  # buildah Cluster Task での Push 先 (=生成されるイメージのタグ名)。自分の DockerHub のレポ名に書き替える。Host 名が指定されていないと暗黙的に Docker Hub になる。
+                                      # 'image-registry.openshift-image-registry.svc:5000/<pipeline実行中のプロジェクト名>/go-http:latest だと内部レジストリ. これは Secret の作成作業は要らないが OpenShift の内部レジストリがセットアップされてる必要がある。 
   workspaces:
     - name: shared-workspace
       volumeClaimTemplate:  # pipelinerun 毎に作られる。pipelrinerun を消すと消える
